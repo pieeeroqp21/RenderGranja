@@ -1,0 +1,15 @@
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.DS_Store
+
+# Secretos y bases de datos locales (NUNCA subir a GitHub)
+firebase-key.json
+*firebase-adminsdk*.json
+LaGranjaLocal.db
+LaGranjaLocal.db-*
+.env
+.env.*

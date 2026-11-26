@@ -1,0 +1,88 @@
+@baseUrl = http://localhost:10000
+# En producción reemplaza por tu URL de Render:
+# @baseUrl = https://brosteria-la-granja-api.onrender.com
+
+### 0. Health Check & Infraestructura
+GET {{baseUrl}}/health
+Accept: application/json
+
+### 1. GET: Consultar todos los platos (Carta)
+GET {{baseUrl}}/api/productos
+Accept: application/json
+
+### 2. GET: Filtrar platos por categoría y búsqueda
+GET {{baseUrl}}/api/productos?categoria=Broaster&q=Pollo
+Accept: application/json
+
+### 3. POST: Registrar nuevo plato (CREATE)
+POST {{baseUrl}}/api/productos
+Content-Type: application/json
+
+{
+  "codigo": "GRJ-099",
+  "nombre": "1/4 Pollo Broaster Picante",
+  "categoria": "Broaster",
+  "porcion": "1/4 Pollo + Papas Nativas + Ají Especial",
+  "precio": 20.50,
+  "descuento": 10,
+  "stock": 25,
+  "imagen": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80",
+  "descripcion": "Versión picante marinada con ají panca y rocoto artesanal.",
+  "disponible": true
+}
+
+### 4. PUT: Actualizar plato existente (UPDATE)
+PUT {{baseUrl}}/api/productos/1
+Content-Type: application/json
+
+{
+  "codigo": "GRJ-001",
+  "nombre": "1/4 Pollo Broaster Clásico",
+  "categoria": "Broaster",
+  "porcion": "1/4 Pollo + Papas + Ensalada",
+  "precio": 18.50,
+  "descuento": 0,
+  "stock": 40,
+  "imagen": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80",
+  "descripcion": "Presa jugosa marinada 12 horas con doble empanizado extra crujiente.",
+  "disponible": true
+}
+
+### 5. VALIDACIÓN: Código vacío (Debe responder 400 Bad Request)
+POST {{baseUrl}}/api/productos
+Content-Type: application/json
+
+{
+  "codigo": "",
+  "nombre": "Plato Inválido",
+  "precio": 15.00
+}
+
+### 6. POST: Login Administrador
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@lagranja.pe",
+  "password": "admin123"
+}
+
+### 7. GET: Categorías, Promociones, Pedidos, Reseñas y Reservas
+GET {{baseUrl}}/api/categorias
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/promociones
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/pedidos
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/resenas
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/reservas
+Accept: application/json

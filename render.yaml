@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: brosteria-la-granja-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ENABLE_SWAGGER
+        value: "true"
+      - key: FIREBASE_PROJECT_ID
+        value: la-granja-4f66a
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        sync: false
