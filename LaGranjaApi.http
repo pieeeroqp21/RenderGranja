@@ -1,6 +1,6 @@
-@baseUrl = http://localhost:10000
-# En producción reemplaza por tu URL de Render:
-# @baseUrl = https://brosteria-la-granja-api.onrender.com
+@baseUrl = https://rendergranja.onrender.com
+# Para pruebas locales descomenta la siguiente línea:
+# @baseUrl = http://localhost:10000
 
 ### 0. Health Check & Infraestructura
 GET {{baseUrl}}/health
